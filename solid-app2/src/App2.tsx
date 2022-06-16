@@ -15,7 +15,7 @@ if the color resets, the component updated inefficiently
 
 
 /*
-This does work, but i cannot change the text align property
+This does work efficiently, but i cannot change the text align property
 
 const App: Component = () => {
   const [get,set] = Solid.createSignal({from:0, to:3})
@@ -94,7 +94,7 @@ export default App;
 
 
 /*
-This does work and alternaltively also createStore can be used, but in most instances i have a nested object with all properties that i may or may not use and creating a signal for each and every property is unveasable
+This does work and alternaltively also createStore can be used, but in most instances i have a nested object with all properties that i may or may not use
 
 const App: Component = () => {
   const [get,set] = Solid.createSignal({from:0, to:3})
@@ -119,5 +119,3 @@ const App: Component = () => {
 
 export default App;
 */
-
-export default App;
