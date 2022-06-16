@@ -92,6 +92,34 @@ export default App;
 
 
 /*
+This does work, but in most instances i have an object with all properties that i may or may not use and creating a signal for each and every property is unveasable
+
+const App: Component = () => {
+  const [get,set] = Solid.createSignal({from:0, to:3})
+  const [align,setalign] = Solid.createSignal("right")
+  window.set = set
+  window.setalign = setalign
+
+  const memo = Solid.createMemo(()=>{
+    const arr=[]
+    for (let i=get().from; i<get().to; i++) {
+      arr.push(i)
+    }
+    return {data: arr}
+  })
+
+  const out =  <Solid.For each={memo().data}>{(itm)=>{ 
+    return <div style={"text-align:"+align()}>{itm}</div>}
+  }</Solid.For>
+  
+  return <>{out}</>
+};
+
+export default App;
+*/
+
+
+/*
 Bruh.
 
 ```
@@ -126,7 +154,6 @@ from 0
 from 1
 >> set({from:1, to:3})
 ```
-*/
 
 const App: Component = () => {
   const [get,set] = Solid.createSignal({from:0, to:3})
@@ -148,3 +175,4 @@ const App: Component = () => {
 };
 
 export default App;
+*/
