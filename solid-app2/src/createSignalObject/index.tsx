@@ -13,7 +13,7 @@ export default function createSignalObject(dataObj:any, signalObj:any):any {
                 let out = makeSignals(dataObj[key], signalObj[key])
                 Object.defineProperty(proxyObj,key,{
                     set: (value)=>
-                        out = makeSignals(dataObj[key] = value, signalObj[key])
+                        Solid.batch(()=> out = makeSignals(dataObj[key] = value, signalObj[key]))
                     ,
                     get: ()=> out,
                     enumerable: true,
