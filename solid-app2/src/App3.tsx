@@ -87,7 +87,6 @@ And there is no limit on the depth of nested objects.
 >> obj.val = {a: 1, b:1}
 b 1
 ```
-*/
 
 export default function() {
   let obj:any; {
@@ -99,3 +98,41 @@ export default function() {
   Solid.createMemo(()=> console.log("b",obj.val.b))
   return null
 }
+*/
+
+
+/// biggeer depth
+
+/*
+```
+>> obj.layer1 = {layer2: {a: 1, b:1}}
+b 1
+```
+
+export default function() {
+  let obj:any; {
+    const accessor = {}
+    obj = createSignalObject({layer1:{layer2:{a:1,b:0}}}, accessor)
+  }
+  window.obj = obj
+  Solid.createMemo(()=> console.log("a",obj.layer1.layer2.a))
+  Solid.createMemo(()=> console.log("b",obj.layer1.layer2.b))
+  return null
+}
+*/
+
+/*
+```
+>> set("layer1", (layer1)=>({...layer1, layer2: {a: 1, b:1}}))
+a 1 
+b 1
+```
+
+export default function() {
+  const [get,set] = createStore({layer1:{layer2:{a:1,b:0}}})
+  window.set = set
+  Solid.createMemo(()=> console.log("a",get.layer1.layer2.a))
+  Solid.createMemo(()=> console.log("b",get.layer1.layer2.b))
+  return null
+}
+*/
