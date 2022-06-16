@@ -154,6 +154,7 @@ from 0
 from 1
 >> set({from:1, to:3})
 ```
+*/
 
 const App: Component = () => {
   const [get,set] = Solid.createSignal({from:0, to:3})
@@ -175,4 +176,3 @@ const App: Component = () => {
 };
 
 export default App;
-*/
