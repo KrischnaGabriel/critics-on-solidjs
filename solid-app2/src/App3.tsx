@@ -59,10 +59,28 @@ export default function() {
 */
 
 
+/*
+Ok, this does works ...
+```
+>> set("val",(val)=>({...val, b: 1}))
+b 1
+>> set("val","a",33)
+a 33
+```
+export default function() {
+  const [get,set] = createStore({val:{a:1,b:0}})
+  window.set = set
+  Solid.createMemo(()=> console.log("a",get.val.a))
+  Solid.createMemo(()=> console.log("b",get.val.b))
+  return null
+}
+*/
+
+
 
 
 /*
-This does work (but ironically only with nested objects,as it does not has a setter yet. Oh, and you can set values by a simple assignment. How sweet is that!),
+This does work (but ironically only with nested objects, as it does not has a setter yet. Oh, and you can set values by a simple assignment. How sweet is that!),
 And there is no limit on the depth of nested objects. 
 ```
 >> obj.val = {a: 1, b:0}
@@ -72,7 +90,7 @@ b 1
 */
 
 export default function() {
-  let obj; {
+  let obj:any; {
     const accessor = {}
     obj = createSignalObject({val:{a:1,b:0}}, accessor)
   }
@@ -81,4 +99,3 @@ export default function() {
   Solid.createMemo(()=> console.log("b",obj.val.b))
   return null
 }
-
