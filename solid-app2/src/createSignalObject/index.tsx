@@ -1,6 +1,9 @@
 import type { Component } from 'solid-js';
 import * as Solid from 'solid-js';
 
+/* this hook doesn't has a setter yet, but implementing one is easy.
+For that the function just needs to be rerun with the same signalObj, but i don't know how to supply it with the same signalObj object, without explicitly passign a reference to it whenever running the hook. See Development.tsx for examples of just that
+*/
 export default function createSignalObject(dataObj:any, signalObj:any):any {
     if (!(typeof dataObj === 'object' && dataObj !== null)) throw Error("something that is not an object has been supplied to the \"createSignalObject\" hook.")
     function makeSignals(dataObj:any, signalObj:any) {
