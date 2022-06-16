@@ -62,7 +62,8 @@ export default function() {
 
 
 /*
-does work (but ironically only with nested objects)
+This does work (but ironically only with nested objects, cuz my selfmade hook isn't so well designed),
+And there is no limit on the amount/depth of nested objects. 
 ```
 >> obj.val = {a: 1, b:0}
 >> obj.val = {a: 1, b:1}
